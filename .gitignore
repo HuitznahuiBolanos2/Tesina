@@ -2,5 +2,3 @@
 *.mp3
 *.mp4
 *.pth
-!models/Fuerza_Marzo_GlowTTS_1.1.1/best_model.pth
-!models/Marzo_GlowTTS_1.0.0/best_model.pth
