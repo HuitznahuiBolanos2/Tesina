@@ -1,0 +1,22 @@
+tts --text "No me parecia muy bien aplicada mi laboriosidad, ni de gran porvenir la carrera tipografica" --model_path "Tutorial 1/models/Fuerza_Marzo_GlowTTS_1.1.1/best_model.pth" --config_path "Tutorial 1/models/Fuerza_Marzo_GlowTTS_1.1.1/config.json" --out_path "Tutorial 1/audios/Generated.wav"
+
+tts --text "No me parecia muy bien aplicada mi laboriosidad, ni de gran porvenir la carrera tipografica" --model_path "Tutorial 1/models/Marzo_GlowTTS_1.0.0/best_model.pth" --config_path "Tutorial 1/models/Marzo_GlowTTS_1.0.0/config.json" --out_path "Tutorial 1/audios/Traditional.wav"
+
+tts --text "No me parecia muy bien aplicada mi laboriosidad, ni de gran porvenir la carrera tipografica" --model_path "/home/huitznahui/Documents/Code Experiments/Coqui/Tutorial 1/models/Marzo_GlowTTS_1.0.0/checkpoint_50000.pth" --config_path "/home/huitznahui/Documents/Code Experiments/Coqui/Tutorial 1/models/Marzo_GlowTTS_1.0.0/config.json" --out_path "Tutorial 1/audios/Pruebas.wav"
+
+
+Run the script.
+CUDA_VISIBLE_DEVICES=0 python train.py
+
+Continue a previous run.
+CUDA_VISIBLE_DEVICES=0 python train.py --continue_path path/to/previous/run/folder/
+
+Fine-tune a model.
+CUDA_VISIBLE_DEVICES=0 python train.py --restore_path path/to/model/checkpoint.pth
+
+Run multi-gpu training.
+CUDA_VISIBLE_DEVICES=0,1,2 python -m trainer.distribute --script train.py
+
+for f in *.wav; do ffmpeg -i "$f" -ar 22050 "converted/${f%}"; done
+
+tts-server --model_path "Tutorial 1/models/Fuerza_Marzo_GlowTTS_1.1.1/best_model.pth" --config_path "Tutorial 1/models/Fuerza_Marzo_GlowTTS_1.1.1/config.json"
